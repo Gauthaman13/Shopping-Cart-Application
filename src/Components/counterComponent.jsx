@@ -2,36 +2,28 @@ import React, { Component } from "react";
 
 class Counter extends Component {
   state = {
-    count: 0,
-    tags: ["tag1", "tag2", "tag3"]
-  };
-
-  styles = {
-    fontSize: 10,
-    fontWeight: "bold"
+    count: 0
   };
 
   render() {
     return (
       <div>
         <span className={this.getBadgeStyle()}>{this.formatCount()}</span>
-        {this.renderTags()}
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          onClick={this.handleIncrements}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
   }
 
-  renderTags() {
-    if (this.state.tags.count === 0) return <p>There are no tags</p>;
-
-    return (
-      <ul style={{ fontSize: 20, fontWeight: "bold" }}>
-        {this.state.tags.map(tag => (
-          <li key={tag}>{tag}</li>
-        ))}
-      </ul>
-    );
-  }
+  handleIncrements = () => {
+    this.setState({
+      count: this.state.count + 1
+    });
+  };
 
   getBadgeStyle() {
     let badgeStyle = "badge m-2 badge-";
