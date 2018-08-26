@@ -5,19 +5,25 @@ class Counter extends Component {
     count: 0
   };
 
-  styles = {
-    fontSize: 10,
-    fontWeight: "bold"
-  };
-
   render() {
     return (
       <div>
         <span className={this.getBadgeStyle()}>{this.formatCount()}</span>
-        <button className="btn btn-secondary btn-sm">Increment</button>
+        <button
+          onClick={this.handleIncrements}
+          className="btn btn-secondary btn-sm"
+        >
+          Increment
+        </button>
       </div>
     );
   }
+
+  handleIncrements = () => {
+    this.setState({
+      count: this.state.count + 1
+    });
+  };
 
   getBadgeStyle() {
     let badgeStyle = "badge m-2 badge-";
